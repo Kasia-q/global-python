@@ -1,23 +1,23 @@
-def dodawanie(a,b):
-    wynik = a + b
+def dodawanie(a:float,b:float):
+    wynik:float = a + b
     print(f"{a} + {b} = {wynik}")
     print("************************************")
 
-def odejmowanie(a,b):
-    wynik = a - b
+def odejmowanie(a:float,b:float):
+    wynik:float = a - b
     print(f"{a} - {b} = {wynik}")
     print("************************************")
 
-def mnozenie(a,b):
-    wynik = a * b
+def mnozenie(a:float,b:float):
+    wynik:float = a * b
     print(f"{a} * {b} = {wynik}")
     print("************************************")
 
-def dzielenie(a,b):
+def dzielenie(a:float,b:float):
     if b == 0:
         print("Mnożenie przez 0 jest niemożliwe.")
         exit
-    wynik = a / b
+    wynik:float = a / b
     print(f"{a} : {b} = {wynik}")
     print("************************************")
 
