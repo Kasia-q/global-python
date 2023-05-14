@@ -1,19 +1,23 @@
 def dodawanie(a:float,b:float):
+    '''pobiera liczby od użytkownika i wyświetla ich sumę'''
     wynik:float = a + b
     print(f"{a} + {b} = {wynik}")
     print("************************************")
 
 def odejmowanie(a:float,b:float):
+    '''pobiera liczby od użytkownika i wyświetla ich różnicę'''
     wynik:float = a - b
     print(f"{a} - {b} = {wynik}")
     print("************************************")
 
 def mnozenie(a:float,b:float):
+    '''pobiera liczby od użytkownika i wyświetla ich iloczyn'''
     wynik:float = a * b
     print(f"{a} * {b} = {wynik}")
     print("************************************")
 
 def dzielenie(a:float,b:float):
+    '''pobiera liczby od użytkownika i wyświetla ich iloraz'''
     if b == 0:
         print("Mnożenie przez 0 jest niemożliwe.")
         exit
