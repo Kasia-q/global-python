@@ -1,49 +1,58 @@
 from os import path
-import random
-
-combination_list = int(input("Podaj ilość kombinacji: "))
-names = []
-surnames = []
-dir_path = path.dirname(__file__)
-nazwa_pliku = 'imiona.txt'
-data_path = path.join(dir_path, nazwa_pliku)
-
-
-with open(data_path, 'r', encoding='utf-8') as plik:
-    linie = plik.readlines()
-    lista_imion = linie
-    for i in range(0, len(lista_imion)-1, +1):
-        lista_imion[i].split()
-        lista_imion[i] = "".join(lista_imion[i][:-1])
-        names.append(lista_imion[i])
 
 dir_path = path.dirname(__file__)
-nazwa_pliku = 'nazwiska.txt'
-data_path = path.join(dir_path, nazwa_pliku)
-with open(data_path, 'r', encoding='utf-8') as plik:
-    linie = plik.readlines()
-    lista_nazwisk = linie
-    for i in range(0, len(lista_nazwisk)-1, +1):
-        lista_nazwisk[i].split()
-        lista_nazwisk[i] = "".join(lista_nazwisk[i][:-1])
-        surnames.append(lista_nazwisk[i])
+filename1 = "imiona.txt"
+filename2 = "nazwiska.txt"
+new_filename = "result.txt"
+data_path1 = path.join(dir_path, filename1)
+data_path2 = path.join(dir_path, filename2)
+data_path3 = path.join(dir_path, new_filename)
 
-i = 1
-losowe_dane = []
-while i != combination_list:
-    random_name = random.choice(names)
-    random_surname = random.choice(surnames)
-    kombinacja = random_name + " " + random_surname
-    if kombinacja in losowe_dane:
-        continue
-    else: 
-        losowe_dane.append(kombinacja)
-        i += 1
+if not path.exists(data_path1) and not path.exists(data_path2):
+    exit()
 
-with open("losowe_imiona.txt", "w", encoding='utf-8') as plik:
-    for random_name in losowe_dane:
-        plik.write(random_name + ', ')
+with open(data_path1, "r", encoding="utf-8") as f:
+    file_lines_names = f.readlines()
+    f.close()
 
-with open("losowe_imiona.txt", 'r', encoding='utf-8') as plik:
-    linie = plik.readlines()
-    print(linie) 
+with open(data_path2, "r", encoding="utf-8") as f:
+    file_lines_surnames = f.readlines()
+    f.close()
+
+
+for i in range (len(file_lines_names)):
+    file_lines_names[i] = file_lines_names[i].strip()
+
+for i in range (len(file_lines_surnames)):
+    file_lines_surnames[i] = file_lines_surnames[i].strip()
+
+max_amount = len(file_lines_names) * len(file_lines_surnames)
+
+
+try:
+    while True:
+        user_amount = int(input("Podaj ilość kombinacji: "))
+        if user_amount <= max_amount:
+            break
+        else:
+            print(f"Maksymalnie możesz wpisać {max_amount} kombinacji.")
+except:
+    print("Wpisanie liczby nie powiodło się")
+    exit()
+
+combinations = []
+
+for name in file_lines_names:
+        if(len(combinations) == user_amount): break
+        for surname in file_lines_surnames:
+            combinations.append(name + " " + surname)
+            if(len(combinations) == user_amount): break
+
+with open(data_path3, "w", encoding="utf-8") as f:
+    for combination in combinations:
+        f.write(combination + "\n")
+    f.close()
+
+print("Otrzymana lista kombinacji: ")
+for i in range (len(combinations)):
+    print(f"{i+1}. {combinations[i]}")
