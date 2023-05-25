@@ -35,23 +35,28 @@ while True:
     print("0. Zamnknij program")
 
     choice = int(input("Którą operację chcesz wykonać?: "))
-
-    if choice == 1:
-        a = int(input("Podaj pierwszą liczbę: "))
-        b = int(input("Podaj drugą liczbę: "))
-        dodawanie(a, b)
-    elif choice == 2:
-        a = int(input("Podaj pierwszą liczbę: "))
-        b = int(input("Podaj drugą liczbę: "))
-        odejmowanie(a, b)
-    elif choice == 3:
-        a = int(input("Podaj pierwszą liczbę: "))
-        b = int(input("Podaj drugą liczbę: "))
-        mnozenie(a, b)
-    elif choice == 4:
-        a = int(input("Podaj pierwszą liczbę: "))
-        b = int(input("Podaj drugą liczbę: "))
-        dzielenie(a, b)
-    elif choice == 0:
-        print("******Zakończenie pracy programu******")
-        break
+    try:
+        
+        if choice == 1:
+            a = int(input("Podaj pierwszą liczbę: "))
+            b = int(input("Podaj drugą liczbę: "))
+            dodawanie(a, b)
+        elif choice == 2:
+            a = int(input("Podaj pierwszą liczbę: "))
+            b = int(input("Podaj drugą liczbę: "))
+            odejmowanie(a, b)
+        elif choice == 3:
+            a = int(input("Podaj pierwszą liczbę: "))
+            b = int(input("Podaj drugą liczbę: "))
+            mnozenie(a, b)
+        elif choice == 4:
+            a = int(input("Podaj pierwszą liczbę: "))
+            b = int(input("Podaj drugą liczbę: "))
+            dzielenie(a, b)
+        elif choice == 0:
+            print("******Zakończenie pracy programu******")
+            break
+        else:
+            print("Niepoprawny wybór, spróbuj ponownie: ")
+    except ValueError:
+        print("Wprowadzono niepoprawne dane")
