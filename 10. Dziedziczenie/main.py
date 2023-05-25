@@ -1,30 +1,3 @@
-# def dodawanie(a:float,b:float):
-#     '''pobiera liczby od użytkownika i wyświetla ich sumę'''
-#     wynik:float = a + b
-#     print(f"{a} + {b} = {wynik}")
-#     print("************************************")
-
-# def odejmowanie(a:float,b:float):
-#     '''pobiera liczby od użytkownika i wyświetla ich różnicę'''
-#     wynik:float = a - b
-#     print(f"{a} - {b} = {wynik}")
-#     print("************************************")
-
-# def mnozenie(a:float,b:float):
-#     '''pobiera liczby od użytkownika i wyświetla ich iloczyn'''
-#     wynik:float = a * b
-#     print(f"{a} * {b} = {wynik}")
-#     print("************************************")
-
-# def dzielenie(a:float,b:float):
-#     '''pobiera liczby od użytkownika i wyświetla ich iloraz'''
-#     if b == 0:
-#         print("Mnożenie przez 0 jest niemożliwe.")
-#         exit
-#     wynik:float = a / b
-#     print(f"{a} : {b} = {wynik}")
-#     print("************************************")
-
 class Figures:
    def __init__(self, side_A, side_B, height):
       self.sideA = side_A
