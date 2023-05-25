@@ -37,28 +37,32 @@ class Figures:
 class Circumference(Figures):
     
     def circ_kwadratu(self):
-       a  = self.sideA
-       result  = 4 * a
-       return print("Obwod kwadratu wynosi:", result)
+        '''Mnoży bok 'a' przez 4'''
+        a  = self.sideA
+        result  = 4 * a
+        return print("Obwod kwadratu wynosi:", result)
    
     def circ_prostokata(self):
-       a = self.sideA
-       b = self.sideB
-       result = 2 * a + 2 * b
-       return print("Obwod prostokąta wynosi:", result)
+        '''mnoży bok 'a' przez 2 i dodaje do pomnożonego przez 2 boku 'b' '''
+        a = self.sideA
+        b = self.sideB
+        result = 2 * a + 2 * b
+        return print("Obwod prostokąta wynosi:", result)
    
     def circ_trojkata(self):
-       a = self.sideA
-       b = self.sideB
-       c = ((a ** 2) + (b ** 2)) ** 0.5
-       result = a + b + c
-       return print("Obwód trójkąta wynosi:", result)
+        '''oblicza bok 'c' i dodaje wszystkie boki do siebie'''
+        a = self.sideA
+        b = self.sideB
+        c = ((a ** 2) + (b ** 2)) ** 0.5
+        result = a + b + c
+        return print("Obwód trójkąta wynosi:", result)
    
     def circ_rownolegloboku(self):
-       a = self.sideA
-       b = self.sideB
-       result = 2 * a + 2 * b
-       return print("Obwód równoległoboku wynosi:", result)
+        '''mnoży bok 'a' przez 2 i dodaje do pomnożonego przez 2 boku 'b' '''
+        a = self.sideA
+        b = self.sideB
+        result = 2 * a + 2 * b
+        return print("Obwód równoległoboku wynosi:", result)
    
 
    
