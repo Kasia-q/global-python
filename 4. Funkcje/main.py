@@ -20,7 +20,7 @@ def dzielenie(a:float,b:float):
     '''pobiera liczby od użytkownika i wyświetla ich iloraz'''
     if b == 0:
         print("Mnożenie przez 0 jest niemożliwe.")
-        exit
+        return
     wynik:float = a / b
     print(f"{a} : {b} = {wynik}")
     print("************************************")
