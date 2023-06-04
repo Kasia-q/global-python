@@ -1,72 +1,91 @@
-class Figures:
-   def __init__(self, side_A, side_B, height):
-      self.sideA = side_A
-      self.sideB = side_B
-      self.height = height
+from abc import ABC, abstractmethod
+
+class Figures(ABC):
+    def __init__(self, side_A, side_B, height):
+        self.sideA = side_A
+        self.sideB = side_B
+        self.height = height
     
-   def kwadrat(self):
-       '''Mnoży bok 'a' przez bok 'a' aby uzyskać pole kwadratu'''
-       a = self.sideA
-       result  = a * a
-       return print("Pole kwadratu wynosi:", result)
-   
-   def prostokat(self):
-       '''Mnoży bok 'a' przez bok 'b' aby uzyskać pole prostokąta'''
-       a = self.sideA
-       b = self.sideB
-       result = a * b
-       return print("Pole prostokąta wynosi:", result)
-   
-   def trojkat(self):
-       '''Mnoży bok 'a' przez wysokość 'h' i dzieli poprzez 2 aby uzyskać pole trójkąta'''
-       a = self.sideA
-       h = self.height
-       result = (a * h)/2
-       return print("Pole trójkąta wynosi:", result)
-   
-   def rownoleglobok(self):
-       '''Mnoży bok 'a' przez wysokość 'h' aby uzyskać pole równoległoboku'''
-       a = self.sideA
-       h = self.height
-       result = a * h
-       return print("Pole równoległoboku wynosi:", result)
-
-
-
-
-class Circumference(Figures):
+    @abstractmethod
+    def area(self):
+        pass
     
-    def circ_kwadratu(self):
-        '''Mnoży bok 'a' przez 4'''
-        a  = self.sideA
-        result  = 4 * a
-        return print("Obwod kwadratu wynosi:", result)
-   
-    def circ_prostokata(self):
-        '''mnoży bok 'a' przez 2 i dodaje do pomnożonego przez 2 boku 'b' '''
+    @abstractmethod
+    def circumference(self):
+        pass
+
+
+class Kwadrat(Figures):
+    def area(self):
+        a = self.sideA
+        result = a * a
+        print("Pole kwadratu wynosi:", result)
+    
+    def circumference(self):
+        a = self.sideA
+        result = 4 * a
+        print("Obwód kwadratu wynosi:", result)
+
+
+class Prostokat(Figures):
+    def area(self):
+        a = self.sideA
+        b = self.sideB
+        result = a * b
+        print("Pole prostokąta wynosi:", result)
+    
+    def circumference(self):
         a = self.sideA
         b = self.sideB
         result = 2 * a + 2 * b
-        return print("Obwod prostokąta wynosi:", result)
-   
-    def circ_trojkata(self):
-        '''oblicza bok 'c' i dodaje wszystkie boki do siebie'''
+        print("Obwód prostokąta wynosi:", result)
+
+
+class Trojkat(Figures):
+    def area(self):
+        a = self.sideA
+        h = self.height
+        result = (a * h) / 2
+        print("Pole trójkąta wynosi:", result)
+    
+    def circumference(self):
         a = self.sideA
         b = self.sideB
         c = ((a ** 2) + (b ** 2)) ** 0.5
         result = a + b + c
-        return print("Obwód trójkąta wynosi:", result)
-   
-    def circ_rownolegloboku(self):
-        '''mnoży bok 'a' przez 2 i dodaje do pomnożonego przez 2 boku 'b' '''
+        print("Obwód trójkąta wynosi:", result)
+
+
+class Rownoleglobok(Figures):
+    def area(self):
+        a = self.sideA
+        h = self.height
+        result = a * h
+        print("Pole równoległoboku wynosi:", result)
+    
+    def circumference(self):
         a = self.sideA
         b = self.sideB
         result = 2 * a + 2 * b
-        return print("Obwód równoległoboku wynosi:", result)
-   
+        print("Obwód równoległoboku wynosi:", result)
 
-   
 
+def get_number_input(prompt):
+    while True:
+        try:
+            number = float(input(prompt))
+            return number
+        except ValueError:
+            print("Niepoprawna wartość. Wprowadź liczbę całkowitą.")
+
+
+def get_choice():
+    while True:
+        choice = get_number_input("Którą operację chcesz wykonać?: ")
+        if 0 <= choice <= 4:
+            return choice
+        else:
+            print("Niepoprawny wybór. Wybierz liczbę od 0 do 4.")
 
 
 while True:
@@ -76,42 +95,38 @@ while True:
     print("2. Prostokąt")
     print("3. Trójkąt")
     print("4. Równoległobok")
-    print("0. Zamnknij program")
+    print("0. Zamknij program")
 
-    choice = int(input("Którą operację chcesz wykonać?: "))
+    choice = get_choice()
 
     if choice == 1:
-        a = int(input("Podaj długość boku kwadratu: "))
-        area = Figures(a, 0, 0)
-        circ = Circumference(a, 0, 0)
-        area.kwadrat()
-        circ.circ_kwadratu()
+        a = get_number_input("Podaj długość boku kwadratu: ")
+        figure = Kwadrat(a, 0, 0)
+        figure.area()
+        figure.circumference()
         
     elif choice == 2:
-        a = int(input("Podaj długość pierwszego boku: "))
-        b = int(input("Podaj długość drugiego boku: "))
-        area = Figures(a, b, 0)
-        circ = Circumference(a, b, 0)
-        area.prostokat()
-        circ.circ_prostokata()
+        a = get_number_input("Podaj długość pierwszego boku: ")
+        b = get_number_input("Podaj długość drugiego boku: ")
+        figure = Prostokat(a, b, 0)
+        figure.area()
+        figure.circumference()
     
     elif choice == 3:
-        a = int(input("Podaj długość pierwszego boku: "))
-        b = int(input("Podaj długość drugiego boku: "))
-        h = int(input("Podaj wysokość: "))
-        area = Figures(a, 0, h)
-        circ = Circumference(a, b, 0)
-        area.trojkat()
-        circ.circ_trojkata()
+        a = get_number_input("Podaj długość pierwszego boku: ")
+        b = get_number_input("Podaj długość drugiego boku: ")
+        h = get_number_input("Podaj wysokość: ")
+        figure = Trojkat(a, b, h)
+        figure.area()
+        figure.circumference()
         
     elif choice == 4:
-        a = int(input("Podaj długość pierwszego boku: "))
-        b = int(input("Podaj długość drugiego boku: "))
-        h = int(input("Podaj wysokość: "))
-        area = Figures(a, 0, h)
-        circ = Circumference(a, b, 0)
-        area.rownoleglobok()
-        circ.circ_rownolegloboku()
+        a = get_number_input("Podaj długość pierwszego boku: ")
+        b = get_number_input("Podaj długość drugiego boku: ")
+        h = get_number_input("Podaj wysokość: ")
+        figure = Rownoleglobok(a, b, h)
+        figure.area()
+        figure.circumference()
         
     elif choice == 0:
         print("******Zakończenie pracy programu******")
